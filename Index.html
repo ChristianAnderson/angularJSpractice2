@@ -13,19 +13,16 @@
             <h4 align="center">- and Angular Store -</h4>
             <ul clas="list-group">
                 <li class="list-group-item" ng-repeat="product in store.products">
-                    <h3>{{product.name}}
-                        <em class="pull-right">{{product.price | currency}}</em>
-                        
+                    <h3 ng-include="'partials/product-title.html'">  
                     </h3>
                     <img align="center" width="40px" ng-src="{{product.images[0].full}}" />
-                    <!--<p> {{product.description}}</p>
-                    <button ng-show="product.canPurchase"> Add to Cart </button>-->
+                   
                     
                     <section style="margin-top:15px;" ng-controller="PanelController as panel">
                         <ul class="nav nav-pills">
                             <li ng-class=" {active:panel.isSelected(1)} "> <a href ng-click="panel.selectTab(1)">Description</a> </li>
                             <li ng-class=" {active:panel.isSelected(2)} "> <a href ng-click="panel.selectTab(2)">Specifications</a> </li>
-                            <li ng-class=" {active:panel.isSelected(3)}1 "> <a href ng-click="panel.selectTab(3)">Reviews</a> </li>
+                            <li ng-class=" {active:panel.isSelected(3)} "> <a href ng-click="panel.selectTab(3)">Reviews</a> </li>
                         </ul>
                         
                         <div class="panel" ng-show="panel.isSelected(1)">
