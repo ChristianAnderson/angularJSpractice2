@@ -13,81 +13,10 @@
             <h4 align="center">- and Angular Store -</h4>
             <ul clas="list-group">
                 <li class="list-group-item" ng-repeat="product in store.products">
-                    <h3 ng-include="'partials/product-title.html'">  
-                    </h3>
+                    <product-title></product-title>
                     <img align="center" width="40px" ng-src="{{product.images[0].full}}" />
-                   
-                    
-                    <section style="margin-top:15px;" ng-controller="PanelController as panel">
-                        <ul class="nav nav-pills">
-                            <li ng-class=" {active:panel.isSelected(1)} "> <a href ng-click="panel.selectTab(1)">Description</a> </li>
-                            <li ng-class=" {active:panel.isSelected(2)} "> <a href ng-click="panel.selectTab(2)">Specifications</a> </li>
-                            <li ng-class=" {active:panel.isSelected(3)} "> <a href ng-click="panel.selectTab(3)">Reviews</a> </li>
-                        </ul>
-                        
-                        <div class="panel" ng-show="panel.isSelected(1)">
-                            <h4>Description</h4>
-                            <p>{{product.description}}</p>
-                        </div>
-                        <div class="panel" ng-show="panel.isSelected(2)">
-                            <h4>Specifications</h4>
-                            <p>{{product.description}}</p>
-                        </div>
-
-                        <div class="panel" ng-show="panel.isSelected(3)">
-                            <h4>Reviews</h4>
-                            <ul>
-                                <li ng-repeat="review in product.reviews">
-                                    <div class="form-group">
-                                        <blockquote>
-                                            <b>Stars: {{review.stars}}</b>
-                                            {{review.body}}
-                                            <cite>- {{review.author}}  on {{review.createdOn | date}}</cite>
-                                        </blockquote>
-                                    </div>
-                                </li>
-                            </ul>
-
-                        
-                            <!--review form-->
-                            <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" 
-                                                ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>   
-                                <!--  Live Preview -->
-                                <blockquote>
-                                    <strong>{{reviewCtrl.review.stars}} Stars</strong>
-                                    {{reviewCtrl.review.body}}
-                                    <cite class="clearfix">— {{reviewCtrl.review.author}}</cite>
-                                </blockquote>
-
-                                <!--Review Form-->
-                                <h4>Submit a Review</h4>
-                                <div class="form-group">
-                                    <label for="exampleSelect1">Rate the Product:</label>
-                                    <select class="form-control custom-select" ng-model="reviewCtrl.review.stars" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" required>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="textarea">Review:</label>
-                                    <textarea class="form-control" ng-model="reviewCtrl.review.body" placeholder="Enter your review" required></textarea>
-                                    <br /><label>by:</label>
-                                    <input class="form-control" ng-model="reviewCtrl.review.author" type="email" placeholder="Enter your email" required />
-                                </div>
-                                
-                                <div> reviewForm is {{reviewForm.$valid}} </div>
-                                <input type="submit" value="submit" class="btn btn-primary"/>
-                            </form>
-
-                        </div>
-
-                           
-                    </section>
+                    <product-panels></product-panels>
                 </li>
-                <div class="panel" >
-                    <form action="prodouctForm" ng-controller="">
-                        <h4>Add A new Product to the store</h4>
-                    </form>
-                </div> 
             </ul>
             
 

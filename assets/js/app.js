@@ -3,16 +3,7 @@
     app.controller('StoreController', function(){
         this.products = gems;   // this is a property of our controller.
     });
-    app.controller('PanelController', function(){
-        this.tab = 1;
-        
-        this.selectTab = function(setTab){
-            this.tab = setTab;
-        };
-        this.isSelected = function(checkTab){
-            return this.tab === checkTab;
-        }
-    });
+    
     // Function to Add a new Review
     app.controller('ReviewController', function(){
         //We create the review property object
@@ -28,11 +19,27 @@
             this.review = {};
         };
     });
+    app.directive('productPanels', function(){
+        return{
+            restrict: 'E',         
+            templateUrl: 'partials/product-panels.html',
+            controller: function(){
+                // this.tab = 1;
+                this.selectTab = function(setTab){
+                    this.tab = setTab;
+                };
+                this.isSelected = function(checkTab){
+                    return this.tab === checkTab;
+                };
+            },
+            controllerAs: 'panel'
+        };
+    });
     var gems = [
     {
         name: 'Dodecahedron',
         price: 2.95,
-        description: 'Some gems have hidden qualities beyond their luster. . .',
+        description: 'Some gems have hidden qualities beyond their might luster. . .',
         canPurchase: true,
         soldOut: false,
         reviews: [
@@ -105,6 +112,12 @@
         ]
     }
     ];
+    app.directive('productTitle', function(){
+        return{
+            restrict:'E',
+            templateUrl:'partials/product-title.html'
+        };
+    });
 })();
 
 
