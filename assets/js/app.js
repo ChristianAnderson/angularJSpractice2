@@ -1,5 +1,5 @@
 (function(){
-    var app = angular.module('store', [ ]);   // Name of the app
+    var app = angular.module('store', ['store-products']);   // Name of the app
     app.controller('StoreController', function(){
         this.products = gems;   // this is a property of our controller.
     });
@@ -19,22 +19,7 @@
             this.review = {};
         };
     });
-    app.directive('productPanels', function(){
-        return{
-            restrict: 'E',         
-            templateUrl: 'partials/product-panels.html',
-            controller: function(){
-                // this.tab = 1;
-                this.selectTab = function(setTab){
-                    this.tab = setTab;
-                };
-                this.isSelected = function(checkTab){
-                    return this.tab === checkTab;
-                };
-            },
-            controllerAs: 'panel'
-        };
-    });
+    
     var gems = [
     {
         name: 'Dodecahedron',
@@ -112,12 +97,6 @@
         ]
     }
     ];
-    app.directive('productTitle', function(){
-        return{
-            restrict:'E',
-            templateUrl:'partials/product-title.html'
-        };
-    });
 })();
 
 

@@ -2,7 +2,7 @@
 <html ng-app="store">
     <head>
         <title>
-            Installation AngularJS
+            Testing AngularJS
         </title>
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="assets/css/app.css">
@@ -14,15 +14,14 @@
             <ul clas="list-group">
                 <li class="list-group-item" ng-repeat="product in store.products">
                     <product-title></product-title>
-                    <img align="center" width="40px" ng-src="{{product.images[0].full}}" />
+                    <product-gallery></product-gallery>
                     <product-panels></product-panels>
                 </li>
             </ul>
-            
-
         </div>
     <script type="text/javascript" src="assets/js/angular.min.js"></script>
     <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="assets/js/products.js"></script>
     </body>
 </html>
 
