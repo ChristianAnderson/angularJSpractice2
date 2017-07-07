@@ -1,8 +1,48 @@
 (function(){
     var app = angular.module('store', ['store-products']);   // Name of the app
-    app.controller('StoreController', function(){
-        this.products = gems;   // this is a property of our controller.
-    });
+    
+    app.controller('StoreController',['$http', function($http){
+        
+        var store = this;
+        store.products = [];
+
+        // $http.get('products.json')
+        //     .then(function (response){
+        //     var data = response.data,
+        //         status = response.status;
+        //         // statusText = response.statusText,
+        //         // headers = response.headers,
+        //         // config = response.config;
+
+        //         store.products = data;
+        //         console.log(data);
+
+        // });
+
+        $http.get('assets/js/products.json').
+            then(function onSuccess(response) {
+                // Handle success
+                var data = response.data;
+                var status = response.status;
+                var statusText = response.statusText;
+                var headers = response.headers;
+                var config = response.config;
+                
+                store.products = data;
+                console.log(data);
+            }).
+            catch(function onError(response) {
+                // Handle error
+                var data = response.data;
+                var status = response.status;
+                var statusText = response.statusText;
+                var headers = response.headers;
+                var config = response.config;
+                
+                console.log(status);
+            });
+
+    }]);
     
     // Function to Add a new Review
     app.controller('ReviewController', function(){
@@ -20,83 +60,7 @@
         };
     });
     
-    var gems = [
-    {
-        name: 'Dodecahedron',
-        price: 2.95,
-        description: 'Some gems have hidden qualities beyond their might luster. . .',
-        canPurchase: true,
-        soldOut: false,
-        reviews: [
-            {
-                stars: 5,
-                body: "it better a good one",
-                author: "sedo.christian@gmail.com",
-                createdOn: 1397490980837
-            }, {
-                stars: 1,
-                body: "This gem sucks.",
-                author: "tim@example.org",
-                createdOn: 1397490980837
-        }],
-        images : [
-            {
-            full: 'assets/img/gem1.png',
-            thumb: 'assets/img/gem1.png'
-            }
-        ]
-    },
-    {
-        name: 'Terso Stone',
-        price: 6.15,
-        description: 'Some gems have hidden qualities beyond their luster. . .',
-        canPurchase: true,
-        soldOut: false,
-        reviews: [
-            {
-                stars: 5,
-                body: "it was a good one",
-                author: "sedo.christian@gmail.com",
-                createdOn: 1397490980837
-            }, {
-                stars: 4,
-                body: "Any gem with 12 faces is for me!",
-                author: "gemsRock@example.org",
-                createdOn: 1397490980837
-        }],
-        images : [
-            {
-            full: 'assets/img/gem2.png',
-            thumb: 'assets/img/gem2.png'
-            }
-        ]
-    },
-    {
-        name: 'Cristal Gem',
-        price: 5.75,
-        description: 'Some gems have hidden qualities beyond their luster. . .',
-        canPurchase: true,
-        soldOut: false,
-        reviews: [
-            {
-                stars: 5,
-                body: "it great a good one",
-                author: "sedo.christian@gmail.com",
-                createdOn: 1397490980837
-            }, {
-            stars: 1,
-            body: "Don't waste your rubles!",
-            author: "nat@example.org",
-            createdOn: 1397490980837
-        }],
-        images : [
-            {
-            full: 'assets/img/gem3.png',
-            thumb: 'assets/img/gem3.png'
-            }
-        ]
-    }
-    ];
+    
 })();
 
 
