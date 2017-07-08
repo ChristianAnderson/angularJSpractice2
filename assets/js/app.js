@@ -6,18 +6,6 @@
         var store = this;
         store.products = [];
 
-        // $http.get('products.json')
-        //     .then(function (response){
-        //     var data = response.data,
-        //         status = response.status;
-        //         // statusText = response.statusText,
-        //         // headers = response.headers,
-        //         // config = response.config;
-
-        //         store.products = data;
-        //         console.log(data);
-
-        // });
 
         $http.get('assets/js/products.json').
             then(function onSuccess(response) {
